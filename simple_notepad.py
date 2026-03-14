@@ -18,7 +18,8 @@ def show_menu():
     print("2. 查看已有笔记")
     print("3. 编辑现有笔记")
     print("4. 列出所有笔记")
-    print("5. 退出程序")
+    print("5. 删除笔记")
+    print("6. 退出程序")
     print("=" * 35)
 
 
@@ -153,18 +154,49 @@ def list_notes():
         print("\n提示：还没有创建任何笔记！")
         return
     
-    print("\n" + "-" * 45)
-    print(f"{'序号':<5} {'文件名':<25} {'大小(KB)':>10}")
-    print("-" * 45)
+    print("\n" + "-" * 60)
+    print(f"{'序号':<5} {'文件名':<25} {'修改时间':<20} {'大小(KB)':>8}")
+    print("-" * 60)
     
     for i, note in enumerate(notes, 1):
         file_path = os.path.join(folder, note)
         size = round(os.path.getsize(file_path) / 1024, 2)
-        print(f"{i:<5} {note:<25} {size:>10}")
+        mtime = datetime.fromtimestamp(os.path.getmtime(file_path)).strftime('%m-%d %H:%M')
+        print(f"{i:<5} {note:<25} {mtime:<20} {size:>8}")
     
-    print("-" * 45)
+    print("-" * 60)
     print(f"共找到 {len(notes)} 个笔记文件")
     print(f"保存位置: {folder}")
+
+
+def delete_note():
+    """删除笔记"""
+    notes = get_note_list()
+    if not notes:
+        print("\n提示：还没有创建任何笔记！")
+        return
+    
+    print("\n--- 笔记列表 ---")
+    for i, note in enumerate(notes, 1):
+        print(f"{i}. {note}")
+    
+    try:
+        choice = int(input("\n请输入要删除的笔记序号: "))
+        if 1 <= choice <= len(notes):
+            note_name = notes[choice-1]
+            file_path = os.path.join(get_notes_folder(), note_name)
+            confirm = input(f"确定要删除 '{note_name}' 吗？(y/n): ").lower()
+            if confirm == 'y':
+                os.remove(file_path)
+                print(f"\n已删除: {note_name}")
+            else:
+                print("已取消删除操作。")
+        else:
+            print(f"错误：请输入1到{len(notes)}之间的有效序号！")
+    except ValueError:
+        print("错误：请输入有效的数字序号！")
+    except OSError as e:
+        print(f"删除失败: {e}")
 
 
 def main():
@@ -175,7 +207,7 @@ def main():
     while True:
         show_menu()
         try:
-            choice = int(input("请输入选项(1-5): "))
+            choice = int(input("请输入选项(1-6): "))
             
             if choice == 1:
                 create_note()
@@ -186,10 +218,12 @@ def main():
             elif choice == 4:
                 list_notes()
             elif choice == 5:
+                delete_note()
+            elif choice == 6:
                 print("\n感谢使用简易记事本，再见！")
                 break
             else:
-                print("错误：请输入1-5之间的数字！")
+                print("错误：请输入1-6之间的数字！")
         except ValueError:
             print("错误：请输入有效的数字！")
 
