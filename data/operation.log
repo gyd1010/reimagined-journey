@@ -1,0 +1,6 @@
+[2026-03-16 19:47:37] [system] [SYSTEM] 程序启动
+[2026-03-16 19:59:30] [system] [SYSTEM] 程序启动
+[2026-03-16 20:02:43] [system] [INIT] 创建数据文件: d:\新建文件夹 (2)\reimagined-journey\data\employees.json
+[2026-03-16 20:02:43] [system] [INIT] 创建数据文件: d:\新建文件夹 (2)\reimagined-journey\data\devices.json
+[2026-03-16 20:02:43] [system] [INIT] 创建数据文件: d:\新建文件夹 (2)\reimagined-journey\data\workorders.json
+[2026-03-16 20:07:32] [system] [EMPLOYEE] 登记员工: 韩思维
