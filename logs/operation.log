@@ -1,0 +1,10 @@
+[2026-03-17 19:35:06] [USER: system] [ACTION: SYSTEM_START] 系统启动
+[2026-03-17 19:35:22] [USER: system] [ACTION: SYSTEM_START] 系统启动
+[2026-03-17 19:35:23] [USER: system] [ACTION: SYSTEM_EXIT] 系统正常退出
+[2026-03-17 19:36:23] [USER: guest] [ACTION: LOGIN_FAILED] 密码错误，剩余尝试次数: 2
+[2026-03-17 19:36:23] [USER: admin] [ACTION: LOGIN] 管理员登录成功
+[2026-03-17 19:36:23] [USER: admin] [ACTION: LOGOUT] 管理员登出
+[2026-03-17 19:36:23] [USER: admin] [ACTION: LOGIN] 管理员登录成功
+[2026-03-17 19:36:23] [USER: admin] [ACTION: EXPORT_TXT] 导出 employees 数据到 D:\新建文件夹 (2)\reimagined-journey 2\export\test_employees.txt
+[2026-03-17 19:36:23] [USER: admin] [ACTION: EXPORT_CSV] 导出 employees 数据到 D:\新建文件夹 (2)\reimagined-journey 2\export\test_employees.csv
+[2026-03-17 19:36:23] [USER: admin] [ACTION: LOGOUT] 管理员登出
